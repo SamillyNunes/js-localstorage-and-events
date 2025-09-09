@@ -41,6 +41,7 @@
     }
     items.push(item);
     populateList(items, itemsList);
+    localStorage.setItem('plates', JSON.stringify(items));
     this.reset(); //resetar o campo do input
   }
 
