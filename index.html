@@ -56,7 +56,19 @@
     }).join(); //para juntar todas as LIs dentro de uma grande string e adicionar no html
   }
 
+  function toggleDone(e) {
+    // Pula a acao ao menos que seja um input
+    if(!e.target.matches('input')) return;
+    const element = e.target;
+    const index = element.dataset.index;
+    
+    items[index].done = !items[index].done;
+    localStorage.setItem('plates', JSON.stringify(items));
+    populateList(items, itemsList);
+  }
+
   addItems.addEventListener('submit', addItem);
+  itemsList.addEventListener('click', toggleDone);
 
   populateList(items, itemsList);
 
