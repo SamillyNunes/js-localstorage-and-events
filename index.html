@@ -31,6 +31,20 @@
   const itemsList = document.querySelector('.plates');
   const items = [];
 
+  function addItem(e){
+    e.preventDefault(); //evita de recarregar a pagina
+
+    const text = (this.querySelector('[name=item]')).value;
+    const item = {
+      text,
+      done: false,
+    }
+    items.push(item);
+    this.reset(); //resetar o campo do input
+  }
+
+  addItems.addEventListener('submit', addItem);
+
 </script>
 
 
