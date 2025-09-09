@@ -40,7 +40,19 @@
       done: false,
     }
     items.push(item);
+    populateList(items, itemsList);
     this.reset(); //resetar o campo do input
+  }
+
+  function populateList(plates = [], platesList){
+    platesList.innerHTML = plates.map((plate, index) => {
+      return `
+        <li>
+          <input type="checkbox" data-index=${index} id="item${index}" ${plate.done ? 'checked' : ''} />
+          <label for="item${index}">${plate.text}</label>
+        </li>
+      `;
+    }).join(); //para juntar todas as LIs dentro de uma grande string e adicionar no html
   }
 
   addItems.addEventListener('submit', addItem);
